@@ -1,0 +1,21 @@
+.infoLayoutSection {
+  background-color: var(--main-bg-color);
+  height: 400px;
+  color: white;
+  font-size: 30px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    width: 1200px;
+  }
+  p {
+    margin: 0;
+  }
+  p:first-child {
+    font-size: 40px;
+    font-weight: 800;
+    padding-bottom: 30px;
+  }
+}

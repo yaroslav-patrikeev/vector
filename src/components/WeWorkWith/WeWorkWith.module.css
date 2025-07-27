@@ -1,0 +1,15 @@
+.weWorkWithSection {
+  background-color: var(--main-bg-color);
+  height: 400px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > p {
+    color: white;
+    font-size: 50px;
+    width: 1200px;
+    margin: 0;
+    text-align: center;
+  }
+}

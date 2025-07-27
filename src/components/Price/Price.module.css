@@ -1,0 +1,38 @@
+.priceSection {
+  background-color: var(--gray);
+  height: 400px;
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+  box-sizing: border-box;
+  font-size: 30px;
+  h4 {
+    font-weight: 800;
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+  p {
+    margin: 0;
+  }
+  div:first-child {
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+  }
+  div:last-child {
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.price {
+  font-weight: 800;
+  font-size: 55px;
+  text-align: right;
+  padding-top: 95px;
+}

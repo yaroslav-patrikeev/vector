@@ -1,0 +1,73 @@
+.getConsultationSection {
+  background-color: var(--main-bg-color);
+  height: 600px;
+  padding: 20px;
+  color: white;
+}
+
+.title {
+  margin: 0;
+  font-size: 100px;
+  position: relative;
+}
+
+.description {
+  margin: 0;
+  margin-bottom: 80px;
+  font-size: 40px;
+}
+
+.time {
+  position: absolute;
+  top: 30px;
+  right: 200px;
+  border-radius: 20px;
+  height: 80px;
+  width: 240px;
+  background-color: #78f1a1;
+  color: var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.formBlock {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.extraInformation {
+  font-size: 20px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  p {
+    margin: 0;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 600px;
+  input {
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 0;
+  }
+  button {
+    border: 0;
+    background-color: #78f1a1;
+    color: var(--main-bg-color);
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 10px;
+  }
+}

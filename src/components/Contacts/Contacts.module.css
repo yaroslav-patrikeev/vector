@@ -1,0 +1,9 @@
+.contactsSection {
+  height: 400px;
+  background-color: var(--gray);
+  padding: 20px;
+  h3 {
+    font-size: 40px;
+    margin: 0;
+  }
+}
