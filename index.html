@@ -10,6 +10,17 @@
     />
     <style>
       /* Общие стили */
+      :root {
+        --primary-color: #291ed9;
+        --secondary-color: #0085ff;
+        --accent-color: #74b7ff;
+        --dark-color: #202b37;
+        --light-color: #f1f1f1;
+        --text-color: #202b37;
+        --text-light: #5a6570;
+        --white: #ffffff;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -17,10 +28,10 @@
       }
 
       body {
-        color: #202b37;
+        color: var(--text-color);
         line-height: 1.6;
         font-family: "Golos Text", sans-serif;
-        background-color: #f1f1f1;
+        background-color: var(--light-color);
         scroll-behavior: smooth;
       }
 
@@ -31,7 +42,7 @@
       }
 
       section {
-        padding: 80px 0;
+        padding: 100px 0;
       }
 
       h1,
@@ -49,7 +60,7 @@
 
       h2 {
         font-size: 3rem;
-        color: #202b37;
+        color: var(--dark-color);
       }
 
       h3 {
@@ -58,8 +69,8 @@
 
       .btn {
         display: inline-block;
-        background-color: #291ed9;
-        color: white;
+        background-color: var(--primary-color);
+        color: var(--white);
         padding: 15px 40px;
         border-radius: 5px;
         text-decoration: none;
@@ -81,13 +92,13 @@
 
       .btn-outline {
         background-color: transparent;
-        border: 2px solid #291ed9;
-        color: #291ed9;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
       }
 
       .btn-outline:hover {
-        background-color: #291ed9;
-        color: white;
+        background-color: var(--primary-color);
+        color: var(--white);
       }
 
       .text-center {
@@ -107,7 +118,7 @@
         left: 0;
         width: 60px;
         height: 4px;
-        background-color: #291ed9;
+        background-color: var(--primary-color);
       }
 
       .text-center .section-title:after {
@@ -117,14 +128,15 @@
 
       /* Шапка */
       header {
-        background-color: #202b37;
-        color: white;
+        background-color: var(--dark-color);
+        color: var(--white);
         padding: 20px 0;
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 1000;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: padding 0.3s ease;
       }
 
       .header-content {
@@ -138,7 +150,7 @@
         font-weight: bold;
         font-family: "Bebas Neue", sans-serif;
         letter-spacing: 2px;
-        color: #ffffff;
+        color: var(--white);
       }
 
       nav ul {
@@ -151,7 +163,7 @@
       }
 
       nav ul li a {
-        color: white;
+        color: var(--white);
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s;
@@ -165,23 +177,36 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: #291ed9;
+        background-color: var(--primary-color);
         transition: width 0.3s;
       }
 
       nav ul li a:hover {
-        color: #74b7ff;
+        color: var(--accent-color);
       }
 
       nav ul li a:hover:after {
         width: 100%;
       }
 
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
       /* Герой секция */
       .hero {
-        background: linear-gradient(135deg, #291ed9 0%, #202b37 100%);
-        color: white;
-        padding: 160px 0 100px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--dark-color) 100%
+        );
+        color: var(--white);
+        padding: 180px 0 120px;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -201,8 +226,11 @@
       .hero h1 {
         font-size: 4.5rem;
         margin-bottom: 20px;
-        color: white;
+        color: var(--white);
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .hero p {
@@ -226,7 +254,8 @@
 
       /* Секция о компании */
       .about {
-        background-color: #ffffff;
+        background-color: var(--white);
+        padding: 120px 0;
       }
 
       .about-content {
@@ -256,91 +285,207 @@
         gap: 20px;
       }
 
+      .about-company-stats {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .about-company-stats h3 {
+        font-size: 28px !important;
+      }
+
       .stat-item {
         background-color: #f5f7ff;
-        padding: 30px 20px;
+        padding: 40px 30px;
         border-radius: 10px;
         text-align: center;
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border-bottom: 4px solid #291ed9;
+        border-bottom: 4px solid var(--primary-color);
         position: relative;
         overflow: hidden;
-      }
-
-      .stat-item:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: rgba(41, 30, 217, 0.1);
-        transition: height 0.5s ease;
-        z-index: 0;
-      }
-
-      .stat-item:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(41, 30, 217, 0.15);
-      }
-
-      .stat-item:hover:before {
         height: 100%;
-      }
-
-      .stat-item:nth-child(2n):hover {
-        transform: translateY(-8px) rotate(1deg);
-      }
-
-      .stat-item:nth-child(3n):hover {
-        transform: translateY(-8px) rotate(-1deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .stat-item h3 {
         font-size: 2.5rem;
-        color: #291ed9;
-        margin-bottom: 10px;
+        color: var(--primary-color);
+        margin-bottom: 15px;
         position: relative;
         z-index: 1;
       }
 
       .stat-item p {
-        color: #202b37;
+        color: var(--text-color);
         font-weight: 500;
         position: relative;
         z-index: 1;
+        font-size: 1.1rem;
       }
 
       /* Секция рынка */
       .market {
-        background-color: #202b37;
-        color: white;
+        background-color: var(--dark-color);
+        color: var(--white);
+        padding: 100px 0;
       }
 
       .market h2 {
-        color: white;
+        color: var(--white);
       }
 
       .market .section-title:after {
-        background-color: #74b7ff;
+        background-color: var(--accent-color);
       }
 
       .market .stat-item {
         background-color: rgba(255, 255, 255, 0.1);
-        border-bottom: 4px solid #74b7ff;
+        border-bottom: 4px solid var(--accent-color);
       }
 
       .market .stat-item h3 {
-        color: #74b7ff;
+        color: var(--accent-color);
       }
 
       .market .stat-item p {
         color: rgba(255, 255, 255, 0.9);
       }
 
-      /* Секция услуг */
-      .services {
-        background-color: #f1f1f1;
+      .market__extra {
+        margin-top: 30px;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Секция роста компаний */
+      .growth {
+        background-color: var(--light-color);
+        padding: 100px 0;
+      }
+
+      .growth-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 60px;
+      }
+
+      .growth-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .growth-stats {
+        flex: 1;
+        min-width: 300px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .growth-stat-item {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--white);
+        padding: 40px 30px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .growth-stat-item h3 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: var(--white);
+      }
+
+      .growth-stat-item p {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        font-size: 1.1rem;
+      }
+
+      /* Секция почему сейчас */
+      .why-now {
+        background-color: var(--white);
+        padding: 100px 0;
+      }
+
+      .why-blocks {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        margin-top: 40px;
+      }
+
+      .why-block {
+        padding: 40px;
+        background: #f8f9ff;
+        border-radius: 10px;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .why-block h3 {
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      .why-block p {
+        color: var(--text-light);
+        line-height: 1.7;
+        font-size: 1.1rem;
+      }
+
+      /* Секция ценности */
+      .value {
+        background-color: var(--light-color);
+        padding: 100px 0;
+      }
+
+      .value-list {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .value-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+        padding: 20px;
+        background: var(--white);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .value-check {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-right: 20px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .value-content h3 {
+        margin-bottom: 8px;
+        font-size: 1.3rem;
+      }
+
+      .value-content p {
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      /* Секция сервисов */
+      .services-section {
+        background-color: var(--white);
+        padding: 100px 0;
       }
 
       .services-grid {
@@ -351,166 +496,171 @@
       }
 
       .service-card {
-        background-color: white;
+        background-color: var(--white);
         padding: 40px 30px;
         border-radius: 10px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        transition: all 0.4s ease;
         text-align: center;
-        border-top: 5px solid #291ed9;
+        border-top: 5px solid var(--primary-color);
         position: relative;
         overflow: hidden;
-      }
-
-      .service-card:after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: linear-gradient(
-          to top,
-          rgba(41, 30, 217, 0.1),
-          transparent
-        );
-        transition: height 0.4s ease;
-        z-index: 0;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(41, 30, 217, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       }
 
-      .service-card:hover:after {
-        height: 100%;
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        background: #f5f7ff;
+        border-radius: 12px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary-color);
       }
 
-      .service-card:nth-child(2n):hover {
-        transform: translateY(-10px) rotate(1deg);
-      }
-
-      .service-card:nth-child(3n):hover {
-        transform: translateY(-10px) rotate(-1deg);
-      }
-
-      .service-card:nth-child(4n) {
-        border-top-color: #0085ff;
-      }
-
-      .service-card:nth-child(5n) {
-        border-top-color: #74b7ff;
+      .service-card.special {
+        border-top: 5px solid var(--secondary-color);
+        background: linear-gradient(135deg, #f8f9ff 0%, #edf1ff 100%);
       }
 
       .service-card h3 {
         font-size: 1.5rem;
-        margin: 20px 0 15px;
-        color: #202b37;
-        position: relative;
-        z-index: 1;
+        margin: 0 0 15px;
+        color: var(--text-color);
       }
 
       .service-card p {
-        color: #5a6570;
+        color: var(--text-light);
         line-height: 1.7;
-        position: relative;
-        z-index: 1;
+        margin-bottom: 0;
       }
 
       /* Секция направлений */
       .directions {
-        background-color: white;
+        background-color: var(--light-color);
+        padding: 100px 0;
       }
 
-      .directions-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        margin-top: 40px;
+      .directions-list {
+        max-width: 800px;
+        margin: 40px auto 0;
       }
 
       .direction-item {
-        background: linear-gradient(135deg, #f8f9ff 0%, #edf1ff 100%);
-        padding: 30px 25px;
+        display: flex;
+        align-items: center;
+        padding: 25px 30px;
+        margin-bottom: 15px;
+        background: var(--white);
         border-radius: 10px;
-        text-align: center;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border-left: 4px solid #0085ff;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .direction-item:before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 133, 255, 0.1),
-          transparent
-        );
-        transition: left 0.7s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
       }
 
       .direction-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 25px rgba(0, 133, 255, 0.1);
+        transform: translateX(10px);
       }
 
-      .direction-item:hover:before {
-        left: 100%;
+      .direction-icon {
+        width: 50px;
+        height: 50px;
+        background: #f5f7ff;
+        border-radius: 10px;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        flex-shrink: 0;
       }
 
-      .direction-item:nth-child(2n) {
-        border-left-color: #291ed9;
+      .direction-content {
+        flex: 1;
       }
 
-      .direction-item:nth-child(3n) {
-        border-left-color: #74b7ff;
+      .direction-content h3 {
+        margin-bottom: 5px;
+        font-size: 1.3rem;
       }
 
-      .direction-item:nth-child(4n):hover {
-        transform: translateY(-8px) scale(1.02);
+      .direction-content p {
+        color: var(--text-light);
+        margin: 0;
       }
 
-      .direction-item:nth-child(5n):hover {
-        transform: translateY(-8px) rotate(2deg);
+      /* Секция компании в цифрах и гарантий */
+      .company-guarantees {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        color: var(--white);
+        padding: 100px 0;
       }
 
-      .direction-number {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #0085ff;
+      .company-guarantees h2 {
+        color: var(--white);
+      }
+
+      .company-guarantees .section-title:after {
+        background-color: var(--accent-color);
+      }
+
+      .guarantee-text {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 50px;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+      }
+
+      .company-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .company-stat-item {
+        text-align: center;
+        padding: 40px 30px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        span {
+          font-size: 1.1rem;
+        }
+      }
+
+      .company-stat-item h3 {
+        font-size: 3rem;
+        color: var(--white);
         margin-bottom: 15px;
-        font-family: "Bebas Neue", sans-serif;
       }
 
-      .direction-item:nth-child(2n) .direction-number {
-        color: #291ed9;
-      }
-
-      .direction-item:nth-child(3n) .direction-number {
-        color: #74b7ff;
-      }
-
-      .direction-item h3 {
-        color: #202b37;
-        margin-bottom: 15px;
-      }
-
-      .direction-item p {
-        color: #5a6570;
-        line-height: 1.6;
+      .company-stat-item p {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        font-size: 1.1rem;
+        line-height: 1.5;
       }
 
       /* Секция цен */
       .pricing {
-        background-color: #f1f1f1;
+        background-color: var(--white);
+        padding: 100px 0;
       }
 
       .pricing-grid {
@@ -521,15 +671,16 @@
       }
 
       .pricing-card {
-        background: linear-gradient(135deg, #ffffff 0%, #f7f9ff 100%);
+        background: linear-gradient(135deg, var(--white) 0%, #f7f9ff 100%);
         padding: 50px 40px;
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
         text-align: center;
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
         overflow: hidden;
         border: 1px solid #e6e9ff;
+        display: flex;
+        flex-direction: column;
       }
 
       .pricing-card:after {
@@ -539,32 +690,28 @@
         left: 0;
         width: 100%;
         height: 5px;
-        background: linear-gradient(90deg, #291ed9, #0085ff);
-      }
-
-      .pricing-card:hover {
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 15px 40px rgba(41, 30, 217, 0.1);
-      }
-
-      .pricing-card:nth-child(2n):hover {
-        transform: translateY(-12px) scale(1.02) rotate(1deg);
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
       }
 
       .pricing-card h3 {
         font-size: 2rem;
-        color: #202b37;
+        color: var(--text-color);
         margin-bottom: 15px;
       }
 
       .pricing-card > p {
-        color: #5a6570;
+        color: var(--text-light);
         margin-bottom: 25px;
+        line-height: 1.6;
       }
 
       .price {
         font-size: 2.5rem;
-        color: #291ed9;
+        color: var(--primary-color);
         margin: 20px 0;
         font-weight: bold;
         font-family: "Bebas Neue", sans-serif;
@@ -581,74 +728,86 @@
         list-style: none;
         margin: 30px 0;
         text-align: left;
+        flex-grow: 1;
       }
 
       .pricing-features li {
         margin-bottom: 15px;
         padding-left: 30px;
         position: relative;
-        color: #5a6570;
-        transition: transform 0.3s ease;
-      }
-
-      .pricing-card:hover .pricing-features li {
-        transform: translateX(5px);
-      }
-
-      .pricing-card:hover .pricing-features li:nth-child(2n) {
-        transform: translateX(8px);
+        color: var(--text-light);
       }
 
       .pricing-features li:before {
         content: "✓";
-        color: #291ed9;
+        color: var(--primary-color);
         position: absolute;
         left: 0;
         font-weight: bold;
       }
 
-      /* Секция гарантий */
-      .guarantees {
-        background: linear-gradient(135deg, #291ed9 0%, #0085ff 100%);
-        color: white;
-        text-align: center;
+      .pricing-cta {
+        margin-top: auto;
+        padding-top: 30px;
       }
 
-      .guarantees h2 {
-        color: white;
+      .pricing-cta .btn {
+        width: 100%;
       }
 
-      .guarantees .section-title:after {
-        background-color: #74b7ff;
+      .pricing-additional {
+        strong {
+          font-size: 1rem;
+        }
+        font-size: 0.9rem;
+        color: var(--text-light);
+        text-align: left;
+        margin-top: 20px;
       }
 
-      .guarantees p {
-        font-size: 1.2rem;
-        max-width: 800px;
-        margin: 0 auto;
-        color: rgba(255, 255, 255, 0.9);
+      .pricing-additional strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--text-color);
       }
 
       /* Секция консультации */
       .consultation {
-        background-color: white;
+        background-color: var(--light-color);
+        padding: 100px 0;
         text-align: center;
       }
 
-      .consultation-form {
-        max-width: 600px;
+      .consultation-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1000px;
         margin: 0 auto;
-        background: white;
+      }
+
+      .consultation-text {
+        text-align: left;
+      }
+
+      .consultation-text h2 {
+        margin-bottom: 20px;
+      }
+
+      .consultation-text p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        margin-bottom: 30px;
+        line-height: 1.7;
+      }
+
+      .consultation-form {
+        background: var(--white);
         padding: 40px;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         text-align: left;
-        transition: all 0.4s ease;
-      }
-
-      .consultation-form:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(41, 30, 217, 0.1);
       }
 
       .form-group {
@@ -659,7 +818,7 @@
         display: block;
         margin-bottom: 8px;
         font-weight: 600;
-        color: #202b37;
+        color: var(--text-color);
       }
 
       .form-group input,
@@ -675,10 +834,9 @@
 
       .form-group input:focus,
       .form-group select:focus {
-        border-color: #291ed9;
+        border-color: var(--primary-color);
         outline: none;
         box-shadow: 0 0 0 3px rgba(41, 30, 217, 0.1);
-        transform: translateY(-2px);
       }
 
       .consultation-info {
@@ -687,100 +845,66 @@
         border-radius: 10px;
         margin-top: 30px;
         text-align: center;
-        transition: all 0.4s ease;
-      }
-
-      .consultation-info:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(41, 30, 217, 0.1);
       }
 
       .consultation-info h3 {
-        color: #291ed9;
+        color: var(--primary-color);
         margin-bottom: 10px;
       }
 
       .consultation-info p {
-        color: #5a6570;
+        color: var(--text-light);
         margin-bottom: 10px;
       }
 
       /* Футер */
       footer {
         background-color: #161f29;
-        color: white;
-        padding: 40px 0 20px;
+        color: var(--white);
+        padding: 60px 0 20px;
       }
 
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
+        grid-template-columns: 2fr 1fr;
+        gap: 60px;
+        margin-bottom: 40px;
+        align-items: start;
       }
 
       .footer-section h3 {
-        color: #74b7ff;
+        color: var(--accent-color);
         margin-bottom: 20px;
         font-size: 1.5rem;
       }
 
-      .contact-info {
+      .footer-info {
         list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
       }
 
-      .contact-info li {
-        margin-bottom: 15px;
+      .footer-info li {
+        margin-bottom: 12px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        font-size: 0.95rem;
       }
 
-      .contact-info li:before {
+      .footer-info li:before {
         content: "•";
-        color: #74b7ff;
+        color: var(--accent-color);
         margin-right: 10px;
+        flex-shrink: 0;
       }
 
       .copyright {
         text-align: center;
-        margin-top: 60px;
         padding-top: 20px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.6);
-      }
-
-      /* Анимации */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-
-      .animate-on-scroll.animated {
-        opacity: 1;
-        transform: translateY(0);
+        font-size: 0.9rem;
       }
 
       /* Адаптивность */
@@ -794,7 +918,11 @@
         }
 
         .hero {
-          padding: 140px 0 80px;
+          padding: 160px 0 100px;
+        }
+
+        .about {
+          padding: 100px 0;
         }
 
         .about-content {
@@ -804,6 +932,37 @@
         .about-text {
           padding-right: 0;
           margin-bottom: 40px;
+        }
+
+        .about-company-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .growth-content {
+          flex-direction: column;
+        }
+
+        .why-blocks {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .consultation-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .consultation-text {
+          text-align: center;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .company-stats-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -817,7 +976,7 @@
         }
 
         section {
-          padding: 60px 0;
+          padding: 80px 0;
         }
 
         .header-content {
@@ -844,12 +1003,59 @@
           grid-template-columns: 1fr;
         }
 
+        .about-company-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .growth-stats {
+          grid-template-columns: 1fr;
+        }
+
         .pricing-grid {
           grid-template-columns: 1fr;
         }
 
         .consultation-form {
           padding: 20px;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+          position: absolute;
+          right: 20px;
+          top: 20px;
+        }
+
+        nav {
+          display: none;
+          width: 100%;
+          margin-top: 20px;
+        }
+
+        nav.active {
+          display: block;
+        }
+
+        nav ul {
+          flex-direction: column;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+
+        .footer-info {
+          grid-template-columns: 1fr;
+        }
+
+        .direction-item {
+          padding: 20px;
+        }
+
+        .direction-icon {
+          width: 40px;
+          height: 40px;
+          margin-right: 15px;
         }
       }
 
@@ -871,6 +1077,18 @@
         .pricing-card {
           padding: 30px 20px;
         }
+
+        .stat-item {
+          padding: 30px 20px;
+        }
+
+        .why-block {
+          padding: 30px 20px;
+        }
+
+        .value-item {
+          padding: 15px;
+        }
       }
     </style>
   </head>
@@ -880,12 +1098,13 @@
       <div class="container">
         <div class="header-content">
           <div class="logo">ВЕКТОР</div>
-          <nav>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+          <nav id="mainNav">
             <ul>
               <li><a href="#about">О компании</a></li>
               <li><a href="#services">Услуги</a></li>
               <li><a href="#directions">Направления</a></li>
-              <li><a href="#pricing">Участие</a></li>
+              <li><a href="#pricing">Прайс</a></li>
               <li><a href="#consultation">Консультация</a></li>
             </ul>
           </nav>
@@ -902,7 +1121,6 @@
           <a href="#consultation" class="btn consultation-btn"
             >Получить консультацию</a
           >
-          <a href="#services" class="btn btn-outline">Наши услуги</a>
         </div>
       </div>
     </section>
@@ -910,38 +1128,21 @@
     <!-- О компании -->
     <section id="about" class="about">
       <div class="container">
-        <h2 class="section-title animate-on-scroll">
-          Делаем тендерные процессы проще
+        <h2 class="section-title">
+          Делаем тендерные процессы проще, сохраняя быстроту и эффективность
         </h2>
-        <div class="about-content">
-          <div class="about-text animate-on-scroll">
-            <p>
-              Мы — команда высококвалифицированных экспертов, которые превращают
-              участие в тендерах по 44-ФЗ и 223-ФЗ в понятный, безопасный и
-              прибыльный процесс.
-            </p>
-            <p>
-              Наши клиенты — от небольших компании, делающих первые шаги в
-              госзакупках, до средних предприятий, которые выигрывают миллионы.
-            </p>
+        <div class="about-company-stats">
+          <div class="stat-item">
+            <h3>Увеличиваем шанс победы</h3>
+            <p>за счет опыта и корректности участия</p>
           </div>
-          <div class="about-stats">
-            <div class="stat-item animate-on-scroll">
-              <h3>3</h3>
-              <p>года активно трудимся во благо наших клиентов</p>
-            </div>
-            <div class="stat-item animate-on-scroll">
-              <h3>17</h3>
-              <p>специалистов высокого уровня</p>
-            </div>
-            <div class="stat-item animate-on-scroll">
-              <h3>508+</h3>
-              <p>торгов подавали заявки, участвовали и побеждали</p>
-            </div>
-            <div class="stat-item animate-on-scroll">
-              <h3>92%</h3>
-              <p>заявок проходят без отклонений</p>
-            </div>
+          <div class="stat-item">
+            <h3>Покажем чистоту закупки</h3>
+            <p>а также острые углы по контракту</p>
+          </div>
+          <div class="stat-item">
+            <h3>Практикующие специалисты</h3>
+            <p>с точечным подходом к документации и торгам</p>
           </div>
         </div>
       </div>
@@ -950,70 +1151,171 @@
     <!-- Рынок в цифрах -->
     <section class="market">
       <div class="container">
-        <h2 class="text-center section-title animate-on-scroll">
-          Рынок торгов в цифрах
-        </h2>
+        <h2 class="section-title">Рынок торгов в цифрах</h2>
         <div class="about-stats">
-          <div class="stat-item animate-on-scroll">
+          <div class="stat-item">
             <h3>26.5 трлн</h3>
             <p>Общая сумма контрактов</p>
           </div>
-          <div class="stat-item animate-on-scroll">
+          <div class="stat-item">
             <h3>4 млн</h3>
             <p>Договоров заключено</p>
           </div>
-          <div class="stat-item animate-on-scroll">
+          <div class="stat-item">
             <h3>>10%</h3>
             <p>Рост количества процедур</p>
           </div>
-          <div class="stat-item animate-on-scroll">
+          <div class="stat-item">
             <h3>>153 тыс</h3>
             <p>Количество закупок у малого и среднего бизнеса</p>
+          </div>
+        </div>
+        <p class="market__extra">*Данные за 2024 год</p>
+      </div>
+    </section>
+
+    <!-- Помогаем компаниям расти -->
+    <section class="growth">
+      <div class="container">
+        <h2 class="section-title">
+          Помогаем компаниям растить выручку на дополнительном рынке сбыта
+        </h2>
+        <div class="growth-content">
+          <div class="growth-text">
+            <p>
+              Мы помогаем бизнесу выходить на новые рынки и увеличивать
+              доходность за счет участия в государственных и коммерческих
+              закупках.
+            </p>
+          </div>
+          <div class="growth-stats">
+            <div class="growth-stat-item">
+              <h3>х4</h3>
+              <p>Закупки малого бизнеса</p>
+            </div>
+            <div class="growth-stat-item">
+              <h3>5.8 трлн</h3>
+              <p>Сумма контрактов МСП</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Услуги -->
-    <section id="services" class="services">
+    <!-- Почему сейчас? Почему мы? -->
+    <section class="why-now">
       <div class="container">
-        <h2 class="text-center section-title animate-on-scroll">
-          Компетентно на каждом этапе
-        </h2>
+        <div class="why-blocks">
+          <div class="why-block">
+            <h3>Почему сейчас?</h3>
+            <p>
+              Рынок торгов растет и объем закупок кратно увеличивается.
+              Возможности эффективного участия выходят на новый уровень, поэтому
+              каждая компания с нами или без работает на быстрорастущем рынке.
+            </p>
+          </div>
+          <div class="why-block">
+            <h3>Почему мы?</h3>
+            <p>
+              Потому что мы без прикрас и настоящие. Мы показываем нашим
+              партнерам все стороны рынка, минимизируя риски и сложности,
+              сопровождая участие компании в процедурах закупок.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ценность работы с нами -->
+    <section class="value">
+      <div class="container">
+        <h2 class="text-center section-title">Ценность работы с нами</h2>
+        <div class="value-list">
+          <div class="value-item">
+            <div class="value-check">✓</div>
+            <div class="value-content">
+              <h3>24/7 поддержка менеджером</h3>
+              <p>Круглосуточная поддержка вашего персонального менеджера</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-check">✓</div>
+            <div class="value-content">
+              <h3>Удаленное сопровождение в закупках</h3>
+              <p>Полное удаленное сопровождение на всех этапах участия</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-check">✓</div>
+            <div class="value-content">
+              <h3>Подготовка формы 2</h3>
+              <p>Профессиональная подготовка всех необходимых документов</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-check">✓</div>
+            <div class="value-content">
+              <h3>Сопровождение в ФАС</h3>
+              <p>
+                Юридическое сопровождение в Федеральной антимонопольной службе
+              </p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-check">✓</div>
+            <div class="value-content">
+              <h3>Комплексная аналитика</h3>
+              <p>Глубокий анализ рынка и конкурентной среды</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Сервисы -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <h2 class="text-center section-title">Услуги</h2>
         <div class="services-grid">
-          <div class="service-card animate-on-scroll">
+          <a href="#consultation" class="service-card">
+            <div class="service-icon">📊</div>
             <h3>Информационная поддержка</h3>
             <p>
               Полное информирование о всех изменениях в законодательстве и новых
               возможностях.
             </p>
-          </div>
-          <div class="service-card animate-on-scroll">
+          </a>
+          <a href="#consultation" class="service-card">
+            <div class="service-icon">💼</div>
             <h3>Консалтинг и консультации</h3>
             <p>
               Профессиональные консультации по всем вопросам участия в тендерах.
             </p>
-          </div>
-          <div class="service-card animate-on-scroll">
+          </a>
+          <a href="#consultation" class="service-card">
+            <div class="service-icon">🛡️</div>
             <h3>Сопровождение в закупках</h3>
             <p>Полное сопровождение на всех этапах участия в закупках.</p>
-          </div>
-          <div class="service-card animate-on-scroll">
+          </a>
+          <a href="#consultation" class="service-card">
+            <div class="service-icon">💰</div>
             <h3>Финансовая поддержка и БГ</h3>
             <p>
               Помощь в получении банковских гарантий и финансовом сопровождении.
             </p>
-          </div>
-          <div class="service-card animate-on-scroll">
-            <h3>Специальные условия</h3>
-            <p>Индивидуальные условия сотрудничества для каждого клиента.</p>
-          </div>
-          <div class="service-card animate-on-scroll">
+          </a>
+          <a href="#consultation" class="service-card">
+            <div class="service-icon">📝</div>
             <h3>Регистрация и подготовка</h3>
             <p>
               Помощь в регистрации и подготовке всех необходимых документов.
             </p>
-          </div>
+          </a>
+          <a href="#consultation" class="service-card special">
+            <div class="service-icon">⭐</div>
+            <h3>Специальные условия</h3>
+            <p>Индивидуальные условия сотрудничества для каждого клиента.</p>
+          </a>
         </div>
       </div>
     </section>
@@ -1021,44 +1323,82 @@
     <!-- Направления -->
     <section id="directions" class="directions">
       <div class="container">
-        <h2 class="text-center section-title animate-on-scroll">
-          Основные направления
-        </h2>
-        <div class="directions-grid">
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">01.</div>
-            <h3>Поставка/снабжение</h3>
-            <p>Короткосрочные контракты по любым видам товаров</p>
+        <h2 class="text-center section-title">Основные направления</h2>
+        <div class="directions-list">
+          <div class="direction-item">
+            <div class="direction-icon">📦</div>
+            <div class="direction-content">
+              <h3>Поставка/снабжение</h3>
+              <p>Короткосрочные контракты по любым видам товаров</p>
+            </div>
           </div>
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">02.</div>
-            <h3>Изготовление полиграфии</h3>
-            <p>Любая полиграфия. От визиток до сложной упаковки</p>
+          <div class="direction-item">
+            <div class="direction-icon">🖨️</div>
+            <div class="direction-content">
+              <h3>Изготовление полиграфии</h3>
+              <p>Любая полиграфия. От визиток до сложной упаковки</p>
+            </div>
           </div>
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">03.</div>
-            <h3>Разработка ПО</h3>
-            <p>Сложные технические решения для государства</p>
+          <div class="direction-item">
+            <div class="direction-icon">💻</div>
+            <div class="direction-content">
+              <h3>Разработка ПО</h3>
+              <p>Сложные технические решения для государства</p>
+            </div>
           </div>
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">04.</div>
-            <h3>Благоустройство</h3>
-            <p>Ландшафтный дизайн и оформление городской среды</p>
+          <div class="direction-item">
+            <div class="direction-icon">🌳</div>
+            <div class="direction-content">
+              <h3>Благоустройство</h3>
+              <p>Ландшафтный дизайн и оформление городской среды</p>
+            </div>
           </div>
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">05.</div>
-            <h3>Логистика</h3>
-            <p>Перевозки грузов, кроме перевозки людей</p>
+          <div class="direction-item">
+            <div class="direction-icon">🚚</div>
+            <div class="direction-content">
+              <h3>Логистика</h3>
+              <p>Перевозки грузов, кроме перевозки людей</p>
+            </div>
           </div>
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">06.</div>
-            <h3>Услуги</h3>
-            <p>Широкий спектр услуг по различным направлениям</p>
+          <div class="direction-item">
+            <div class="direction-icon">🔧</div>
+            <div class="direction-content">
+              <h3>Услуги</h3>
+              <p>Широкий спектр услуг по различным направлениям</p>
+            </div>
           </div>
-          <div class="direction-item animate-on-scroll">
-            <div class="direction-number">07.</div>
-            <h3>Строительство (до 25 млн)</h3>
-            <p>Строительные работы любой сложности</p>
+          <div class="direction-item">
+            <div class="direction-icon">🏗️</div>
+            <div class="direction-content">
+              <h3>Строительство (до 25 млн)</h3>
+              <p>Строительные работы любой сложности</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Компания в цифрах и гарантии -->
+    <section class="company-guarantees">
+      <div class="container">
+        <h2 class="text-center section-title">Гарантии</h2>
+        <p class="guarantee-text">
+          Мы гарантируем, что ваша заявка на участие будет соответствовать
+          законодательству и регламентам участия, что позволит вам не получить
+          отказ на этапе подачи заявки.
+        </p>
+        <div class="company-stats-grid">
+          <div class="company-stat-item">
+            <h3>3 <span>года</span></h3>
+            <p>Активно трудимся во благо наших клиентов</p>
+          </div>
+          <div class="company-stat-item">
+            <h3>17 <span>специалистов</span></h3>
+            <p>Обеспечивают корректность участия</p>
+          </div>
+          <div class="company-stat-item">
+            <h3>508+ <span>торгов</span></h3>
+            <p>Подавали заявки, участвовали и побеждали</p>
           </div>
         </div>
       </div>
@@ -1067,107 +1407,92 @@
     <!-- Цены -->
     <section id="pricing" class="pricing">
       <div class="container">
-        <h2 class="text-center section-title animate-on-scroll">
-          Формы участия
-        </h2>
+        <h2 class="text-center section-title">Формы участия</h2>
         <div class="pricing-grid">
-          <div class="pricing-card animate-on-scroll">
+          <div class="pricing-card">
             <h3>Разовое участие</h3>
             <p>Сопроводим в процедуре участия любого способа закупки</p>
-            <div class="price">от 25 000 ₽</div>
-            <span class="price-note">Зависит от сложности процедуры</span>
-            <ul class="pricing-features">
-              <li>Подбор и аналитика</li>
-              <li>Подготовка документов</li>
-              <li>Участие со специалистами</li>
-              <li>Персональный менеджер</li>
-            </ul>
-            <a href="#consultation" class="btn consultation-btn">Выбрать</a>
+            <div class="price">от 25 000* ₽</div>
+            <span class="price-note">*Зависит от сложности процедуры</span>
+            <div class="pricing-cta">
+              <a href="#consultation" class="btn btn-outline">Выбрать</a>
+            </div>
           </div>
-          <div class="pricing-card animate-on-scroll">
+          <div class="pricing-card">
             <h3>Подписка на серию торгов</h3>
             <p>
               Тщательная выборка и полное сопровождение в торгах по вашей
               тематике
             </p>
-            <div class="price">от 150 000 ₽</div>
-            <span class="price-note">Деньги списываются за каждое участие</span>
-            <ul class="pricing-features">
-              <li>Подбор и аналитика</li>
-              <li>Подготовка документов</li>
-              <li>Участие со специалистами</li>
-              <li>Персональный менеджер</li>
-              <li>Юридические аспекты</li>
-              <li>Еженедельный дайджест</li>
-              <li>Подготовка и подача документов в ФАС</li>
-              <li>Поддержка при исполнении контракта</li>
-            </ul>
-            <a href="#consultation" class="btn consultation-btn">Выбрать</a>
+            <div class="price">от 150 000* ₽</div>
+            <span class="price-note"
+              >*Деньги списываются за каждое участие</span
+            >
+            <div class="pricing-additional">
+              <strong>Дополнительно:</strong>
+              Персональный юрист<br />
+              Подача жалоб в ФАС<br />
+              Консультации и аналитика<br />
+              Еженедельный дайджест торгов
+            </div>
+            <div class="pricing-cta">
+              <a href="#consultation" class="btn btn-outline">Выбрать</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Гарантии -->
-    <section class="guarantees">
-      <div class="container">
-        <h2 class="text-center section-title animate-on-scroll">Гарантии</h2>
-        <p>
-          Мы гарантируем, что ваша заявка на участие будет соответствовать
-          законодательству и регламентам участия, что позволит вам не получить
-          отказ на этапе подачи заявки.
-        </p>
       </div>
     </section>
 
     <!-- Консультация -->
     <section id="consultation" class="consultation">
       <div class="container">
-        <h2 class="text-center section-title animate-on-scroll">
-          Получить консультацию
-        </h2>
-        <p class="text-center">
-          Вы можете задать нам вопросы по процедурам и возможностям.
-        </p>
-
-        <form id="consultationForm" class="consultation-form animate-on-scroll">
-          <h3>Название или ИНН вашей организации</h3>
-
-          <div class="form-group">
-            <label for="company">Название организации / ИНН</label>
-            <input type="text" id="company" name="company" required />
+        <div class="consultation-content">
+          <div class="consultation-text">
+            <h2>Получить консультацию</h2>
+            <p>
+              Мы расскажем вам о возможностях на рынке закупок, о процессах и
+              сложностях
+            </p>
+            <p>
+              На консультации мы не продаем, а хотим лишь, чтобы вы больше
+              узнали о рынке и нацелились на работу в торгах
+            </p>
+            <div class="consultation-info">
+              <h3>30-ти минутный звонок</h3>
+              <p>Это бесплатно</p>
+            </div>
           </div>
+          <form id="consultation-form" class="consultation-form">
+            <div class="form-group">
+              <label for="company">Название организации / ИНН</label>
+              <input type="text" id="company" name="company" required />
+            </div>
 
-          <div class="form-group">
-            <label for="name">Как к вам обращаться</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+            <div class="form-group">
+              <label for="name">Как к вам обращаться</label>
+              <input type="text" id="name" name="name" required />
+            </div>
 
-          <div class="form-group">
-            <label for="phone">Телефон</label>
-            <input type="tel" id="phone" name="phone" required />
-          </div>
+            <div class="form-group">
+              <label for="phone">Контакт для связи</label>
+              <input type="text" id="phone" name="phone" required />
+            </div>
 
-          <div class="form-group">
-            <label for="contact-method">Удобный способ связи</label>
-            <select id="contact-method" name="contact-method" required>
-              <option value="">Выберите способ связи</option>
-              <option value="phone">Телефонный звонок</option>
-              <option value="whatsapp">WhatsApp</option>
-              <option value="telegram">Telegram</option>
-              <option value="email">Email</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label for="contact-method">Удобный способ связи</label>
+              <select id="contact-method" name="contact-method" required>
+                <option value="">Выберите способ связи</option>
+                <option value="phone">Телефонный звонок</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="telegram">Telegram</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
 
-          <button type="submit" class="btn" style="width: 100%">
-            Отправить
-          </button>
-        </form>
-
-        <div class="consultation-info animate-on-scroll">
-          <h3>30 минут</h3>
-          <p>Да, это бесплатно</p>
-          <p>Ответим честно, объясним сложное простым языком</p>
+            <button type="submit" class="btn" style="width: 100%">
+              Отправить
+            </button>
+          </form>
         </div>
       </div>
     </section>
@@ -1184,20 +1509,13 @@
             </p>
           </div>
           <div class="footer-section">
-            <h3>Услуги</h3>
-            <ul class="contact-info">
-              <li><a href="#services">Сопровождение в закупках</a></li>
-              <li><a href="#services">Консультации</a></li>
-              <li><a href="#services">Подготовка документов</a></li>
-            </ul>
-          </div>
-          <div class="footer-section">
-            <h3>Навигация</h3>
-            <ul class="contact-info">
-              <li><a href="#about">О компании</a></li>
-              <li><a href="#services">Услуги</a></li>
-              <li><a href="#pricing">Участие</a></li>
-              <li><a href="#consultation">Консультация</a></li>
+            <h3>Информация</h3>
+            <ul class="footer-info">
+              <li>ИП Патрикеев Ярослав Сергеевич</li>
+              <li>ИНН: 502244087290</li>
+              <li>ОГРНИП: 325508100506312</li>
+              <li>Тел.: +7 (999) 999-99-99</li>
+              <li>Email: info@vector.ru</li>
             </ul>
           </div>
         </div>
@@ -1228,6 +1546,12 @@
               top: targetPosition,
               behavior: "smooth",
             });
+
+            // Закрываем мобильное меню после клика
+            const nav = document.getElementById("mainNav");
+            if (nav.classList.contains("active")) {
+              nav.classList.remove("active");
+            }
           }
         });
       });
@@ -1244,7 +1568,7 @@
 
       // Обработка формы консультации
       document
-        .getElementById("consultationForm")
+        .getElementById("consultation-form")
         .addEventListener("submit", function (e) {
           e.preventDefault();
 
@@ -1270,26 +1594,13 @@
           this.reset();
         });
 
-      // Анимация появления элементов при скролле
-      const animateElements = document.querySelectorAll(".animate-on-scroll");
+      // Мобильное меню
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mainNav = document.getElementById("mainNav");
 
-      function checkScroll() {
-        animateElements.forEach((element) => {
-          const elementPosition = element.getBoundingClientRect().top;
-          const screenPosition = window.innerHeight / 1.3;
-
-          if (elementPosition < screenPosition) {
-            element.classList.add("animated");
-          }
-        });
-      }
-
-      // Проверяем при загрузке и при скролле
-      window.addEventListener("load", checkScroll);
-      window.addEventListener("scroll", checkScroll);
-
-      // Добавляем небольшую задержку для анимации элементов при загрузке
-      setTimeout(checkScroll, 100);
+      mobileMenuBtn.addEventListener("click", function () {
+        mainNav.classList.toggle("active");
+      });
     </script>
   </body>
 </html>
